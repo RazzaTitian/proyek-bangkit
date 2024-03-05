@@ -143,7 +143,7 @@ for station, df in data_frames.items():
     plt.title(f'Distribution of PM2.5 levels at {station} Station')
     plt.xlabel('(PM2.5 (µg/m³)')
     plt.ylabel('Frequency')
-    plt.show()
+    st.pyplot()
 
 for station, df in data_frames.items():
     plt.figure(figsize=(10, 5))
@@ -151,14 +151,14 @@ for station, df in data_frames.items():
     plt.title(f'Distribution of PM10 levels at {station} Station')
     plt.xlabel('PM10 (µg/m³)')
     plt.ylabel('Frequency')
-    plt.show()
+    st.pyplot()
 
 """**We make a correlation matrix to see if there is substantial evidence for question number 2**"""
 
 plt.figure(figsize=(12, 10))
 sns.heatmap(data_frames[first_station].corr(), annot=True, fmt='.2f', cmap='coolwarm')
 plt.title('Correlation Matrix of Variables')
-plt.show()
+st.pyplot()
 
 """## Visualization & Explanatory Analysis
 
@@ -186,7 +186,7 @@ def plot_monthly_average(data_frames, pollutant):
     plt.legend(title='Stations')
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.show()
+    st.pyplot()
 
 plot_monthly_average(data_frames, 'PM2.5')
 plot_monthly_average(data_frames, 'PM10')
@@ -202,7 +202,7 @@ sns.scatterplot(data=specific_period_df, x='TEMP', y='PM2.5')
 plt.title('Correlation between Temperature and PM2.5 for January 2015')
 plt.xlabel('Temperature (°C)')
 plt.ylabel('PM2.5 (µg/m³)')
-plt.show()
+st.pyplot()
 
 correlation = specific_period_df['TEMP'].corr(specific_period_df['PM2.5'])
 print(f"The correlation coefficient between temperature and PM2.5 for January 2015 is: {correlation}")
