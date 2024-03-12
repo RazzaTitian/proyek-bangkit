@@ -107,18 +107,18 @@ def clean_air_quality_data(df):
 
     # Handle missing values
     for col in ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3']:
-        df[col].fillna(df[col].median(), inplace=True)
+        df[col].fillna(df[col].median())
 
     # Convert date and time
     df['date_time'] = pd.to_datetime(df[['year', 'month', 'day', 'hour']])
-    df.drop(['year', 'month', 'day', 'hour'], axis=1, inplace=True)
+    df.drop(['year', 'month', 'day', 'hour'], axis=1)
 
     # Impute wind direction
     if 'wd' in df.columns:
         df['wd'] = df['wd'].fillna(df['wd'].mode()[0])
 
     # Drop duplicates
-    df.drop_duplicates(inplace=True)
+    df.drop_duplicates()
 
     # Outlier handling
     pollutants = ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3']
